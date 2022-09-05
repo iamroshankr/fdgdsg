@@ -1,0 +1,11 @@
+{
+  "name": "flipkart-server",
+  "version": "1.0.0",
+  "description": "server for my clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Roshan",
+  "license": "ISC"
+}
