@@ -1,5 +1,4 @@
 import { Grid, styled } from "@mui/material";
-import { flexbox } from "@mui/system";
 
 import { imageURL } from "../../constants/data";
 
@@ -19,12 +18,12 @@ const Image = styled('img')(({ theme }) => ({
     }
 }));
 
-const EndSection = () => {
+const MidSection = () => {
 
     const url = 'https://rukminim1.flixcart.com/flap/3006/433/image/4789bc3aefd54494.jpg?q=50';
     return (
         <>
-            <Wrapper lg={12} sm={12} md={12} xs={12} container>
+            <Wrapper container>
                 {
                     imageURL.map((image) => (
                         <Grid item lg={4} sm={12} md={4} xs={12}>
@@ -38,4 +37,4 @@ const EndSection = () => {
     );
 };
 
-export default EndSection;
+export default MidSection;
