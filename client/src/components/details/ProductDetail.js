@@ -64,11 +64,35 @@ const ProductDetail = ({ product }) => {
             <Typography>Available Offers</Typography>
 
             <SmallText>
-                <Typography><Badge /> 5% Cashback on Flipkart Axis Bank Card T&C</Typography>
-                <Typography><Badge /> Sign up for Flipkart Pay Later and get Flipkart Gift Card worth upto ₹500* Know More</Typography>
-                <Typography><Badge /> Buy this product and get upto ₹500 off on Flipkart Furniture Know More</Typography>
-                <Typography><Badge /> Purchase this product & win a surprise cashback coupon for The Big Billion Days Sale 2022 Know More</Typography>
-                <Typography><EmiIcon /> EMI starting from ₹{Math.floor(product.price.cost/3)}/monthView Plans</Typography>
+                <Typography>
+                    <Badge />
+                    5% Cashback on Flipkart Axis Bank Card
+                    <Box component="span" style={{color: '#2874f0', fontWeight: 600, cursor: 'pointer'}}> T&C</Box>
+                </Typography>
+
+                <Typography>
+                    <Badge />
+                    Sign up for Flipkart Pay Later and get Flipkart Gift Card worth upto ₹500*
+                    <Box component="span" style={{color: '#2874f0', fontWeight: 600, cursor: 'pointer'}}> Know More</Box>
+                </Typography>
+
+                <Typography>
+                    <Badge />
+                    Buy this product and get upto ₹500 off on Flipkart Furniture
+                    <Box component="span" style={{color: '#2874f0', fontWeight: 600, cursor: 'pointer'}}> Know More</Box>
+                </Typography>
+
+                <Typography>
+                    <Badge />
+                    Purchase this product & win a surprise cashback coupon for The Big Billion Days Sale 2022
+                    <Box component="span" style={{color: '#2874f0', fontWeight: 600, cursor: 'pointer'}}> Know More</Box>
+                </Typography>
+
+                <Typography>
+                    <EmiIcon />
+                    EMI starting from ₹{Math.floor(product.price.cost/3)}/month
+                    <Box component="span" style={{color: '#2874f0', fontWeight: 600, cursor: 'pointer'}}> View Plans</Box>
+                </Typography>
             </SmallText>
 
             <Table>

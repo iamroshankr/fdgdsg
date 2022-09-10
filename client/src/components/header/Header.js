@@ -1,21 +1,27 @@
-import React from 'react';
-import { AppBar, Toolbar, Box, Typography, styled } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Box, Typography, IconButton, Drawer, List, ListItem, styled } from '@mui/material';
 import { Link } from "react-router-dom";
 
 import Search from './Search';
 import CustomButtons from './CustomButtons';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const StyledHeader = styled(AppBar)`
     background: #2874f0;
     height: 55px;
 `;
 
-const Component = styled(Link)`
-    margin-left: 12%;
-    line-height: 0;
-    text-decoration: none;
-    color: inherit;
-`;
+const Component = styled(Link) ( ({ theme }) => ({
+    marginLeft: '12%',
+    lineHeight: 0,
+    textDecoration: 'none',
+    color: 'inherit',
+    width: 100,
+
+    [theme.breakpoints.down('lg')]: {
+        marginLeft: '8%' 
+    }
+}));
 
 const SubHeading = styled(Typography)`
     font-size: 11px;
@@ -28,38 +34,86 @@ const PlusImage = styled('img')({
     marginLeft: 4
 });
 
-const CustomButtonBox = styled(Box)`
-    margin: 0 5% 0 auto;
-`;
+const CustomButtonBox = styled(Box)(({ theme }) => ({
+    marginRight: '5%',
+    marginLeft: 'auto',
+
+    [theme.breakpoints.down('lg')]: {
+        marginRight: 'auto',
+        marginLeft: 10 
+    },
+
+    [theme.breakpoints.down('md')]: {
+        display: 'none'
+    }
+}));
+
+const MenuButton = styled(IconButton)(({ theme }) => ({
+    display: 'none',
+
+    [theme.breakpoints.down('md')]: {
+        display: 'block'
+    }
+}));
 
 const Header = () => {
+
     const logoURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png';
     const subURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png';
 
-    return(
-        <div className="header">
-            <StyledHeader>
-                <Toolbar style={{minHeight: 55}}>
+    const [open, setOpen] = useState(false);
 
-                    <Component to='/'>
-                        <img src={logoURL} alt='logo' style={{ width: 75 }} />
-                        <Box style={{display: 'flex'}}>
-                            <SubHeading>Explore &nbsp;
-                                <Box component='span' style={{color: '#FFE500'}}>Plus</Box>
-                            </SubHeading>
-                            <PlusImage src={subURL} alt='sub-logo' />
-                        </Box>
-                    </Component>
-                    
-                    <Search />
+    const openDrawer = () => {
+        setOpen(true);
+    };
 
-                    <CustomButtonBox>
+    const closeDrawer = () => {
+        setOpen(false);
+    };
+
+    const renderList = () => {
+
+        return (
+            <Box onClick={closeDrawer} >
+                <List>
+                    <ListItem button>
                         <CustomButtons />
-                    </CustomButtonBox>
+                    </ListItem>
+                </List>
+            </Box>
+        );
+    };
 
-                </Toolbar>
-            </StyledHeader>
-        </div>
+    return (
+        <StyledHeader>
+            <Toolbar style={{ minHeight: 55 }}>
+
+                <MenuButton color='inherit' onClick={openDrawer}>
+                    <MenuIcon />
+                </MenuButton>
+
+                <Drawer open={open} onClose={closeDrawer} >
+                    {renderList()}
+                </Drawer>
+
+                <Component to='/'>
+                    <img src={logoURL} alt='logo' style={{ width: 75 }} />
+                    <Box style={{ display: 'flex' }}>
+                        <SubHeading>Explore &nbsp;
+                            <Box component='span' style={{ color: '#FFE500' }}>Plus</Box>
+                        </SubHeading>
+                        <PlusImage src={subURL} alt='sub-logo' />
+                    </Box>
+                </Component>
+
+                <Search />
+
+                <CustomButtonBox>
+                    <CustomButtons />
+                </CustomButtonBox>
+
+            </Toolbar>
+        </StyledHeader>
     );
 };
 export default Header;
