@@ -13,9 +13,15 @@ const SearchContainer = styled(Box) ( ({ theme }) => ({
     width: '38%',
     borderRadius: 2,
     marginLeft: 10,
+    marginRight: 20,
+
+    [theme.breakpoints.down('lg')]: {
+        width: '30%'
+    },
 
     [theme.breakpoints.down('md')]: {
-        marginLeft: 35
+        marginLeft: 35,
+        width: '50%'
     }
 }));
 

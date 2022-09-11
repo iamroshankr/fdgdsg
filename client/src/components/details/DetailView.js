@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Box, Typography, Grid, styled } from "@mui/material";
+import { Box, Grid, styled } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'; //used to extract params from the url
 
