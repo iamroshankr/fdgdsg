@@ -1,8 +1,10 @@
 import React from 'react';
 import { Box, Grid, Button, Typography, styled } from '@mui/material';
-
 import { useSelector, useDispatch } from 'react-redux';
+
 import { resetCart } from '../../redux/actions/cartActions';
+import { payWithPaytm } from "../../service/api";
+import { post } from "../../utils/paytm";
 
 import CartItem from './CartItem';
 import TotalBalance from './TotalBalance';
@@ -70,6 +72,19 @@ const Cart = () => {
         dispatch(resetCart());
     };
 
+    const buyNow = async () => {
+
+        const resp = await payWithPaytm({ amount: 500, email: 'a@b.com' });
+
+        const information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: resp
+        };
+
+        post(information);
+
+    };
+
     return (
         <>
             {
@@ -90,7 +105,7 @@ const Cart = () => {
 
                             <ButtonWrapper>
                                 <ResetButton variant='contained' onClick={emptyCart} >Remove All</ResetButton>
-                                <OrderButton variant='contained'>Place Order</OrderButton>
+                                <OrderButton variant='contained' onClick={buyNow} >Place Order</OrderButton>
                             </ButtonWrapper>
 
                         </LeftComponent>

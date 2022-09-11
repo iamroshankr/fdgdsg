@@ -15,8 +15,6 @@ export const getProducts = () => async (dispatch) => {
     }
 };
 
-//calling dispatch calls the reducer
-
 export const getProductDetails = (id) => async (dispatch) => {
     try {
 

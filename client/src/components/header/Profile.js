@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { Box, Typography, Menu, MenuItem, styled } from "@mui/material";
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+
 const Component = styled(Menu)`
     margin-top: 5px;
 `;
@@ -14,13 +17,16 @@ const Logout = styled(Typography)`
 const Profile = ({ account, setAccount }) => {
 
     const [open, setOpen] = useState('');
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const handleClick = (evt) => {
         setOpen(evt.currentTarget);
+        setMenuOpen(true);
     };
 
     const handleClose = () => {
         setOpen('');
+        setMenuOpen(false);
     };
 
     const logoutUser = () => {
@@ -30,7 +36,10 @@ const Profile = ({ account, setAccount }) => {
     return (
         <>
             <Box onClick={handleClick}>
-                <Typography style={{ marginTop: 2, cursor: 'pointer' }}>{account}</Typography>
+                <Box style={{ marginTop: 5, cursor: 'pointer', fontWeight: 600, display: 'flex' }}>
+                    {account}
+                    { menuOpen ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" /> }
+                </Box>
             </Box>
             <Component anchorEl={open} open={Boolean(open)} onClose={handleClose} >
                 <MenuItem onClick={() => { handleClose(); logoutUser(); }}>

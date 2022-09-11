@@ -20,3 +20,13 @@ export const authenticateLogin = async (data) => {
         return err.response;
     }
 };
+
+export const payWithPaytm = async (data) => {
+    try {
+        const resp = await axios.post(`${URL}/payment`, data);
+        return resp.data;
+    }
+    catch(err) {
+        console.log("Error while calling payment api", err);
+    }
+};

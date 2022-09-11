@@ -63,7 +63,7 @@ const DetailView = () => {
 
     return (
         <Component>
-            { loading ? <LoadingSpinner /> : renderDetails() }
+            {loading ? <LoadingSpinner /> : renderDetails()}
         </Component>
     );
 };

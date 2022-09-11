@@ -1,9 +1,6 @@
 import React, { useEffect } from "react";
 import { styled, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-// these are custom hooks used for dispatching an action to call a reducer and 
-// access the state from the redux store respectively.
-// redux = front-end database
 
 import NavBar from "./NavBar";
 import Banner from "./Banner";

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Box, Typography, Button, Badge, styled } from '@mui/material';
+import { Box, Typography, Button, Badge, Menu, MenuItem, ListItemText, ListItemIcon, styled } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -8,14 +8,26 @@ import LoginDialog from '../login/loginDialog';
 import { DataContext } from '../../context/DataProvider';
 import Profile from './Profile';
 
-const Wrapper = styled(Box)( ({ theme }) => ({
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+import MovingIcon from '@mui/icons-material/Moving';
+import DownloadIcon from '@mui/icons-material/Download';
+
+const Wrapper = styled(Box)(({ theme }) => ({
     display: 'flex',
     margin: '0 3% 0 auto',
+
+    '& > p': {
+        fontWeight: 600
+    },
 
     '& > div, & > p, & > button': {
         marginRight: '40px',
         fontSize: '16px',
-        alignItems: 'center'
+        alignItems: 'center',
+        cursor: 'pointer'
     },
 
     [theme.breakpoints.down('md')]: {
@@ -24,7 +36,7 @@ const Wrapper = styled(Box)( ({ theme }) => ({
         '& > div, & > p, & > button': {
             marginBottom: 10,
         }
-    
+
     },
 
     [theme.breakpoints.down('lg')]: {
@@ -35,7 +47,7 @@ const Wrapper = styled(Box)( ({ theme }) => ({
 
 }));
 
-const Container = styled(Link)( ({ theme }) => ({
+const Container = styled(Link)(({ theme }) => ({
     display: 'flex',
     textDecoration: 'none',
     color: 'inherit',
@@ -46,7 +58,7 @@ const Container = styled(Link)( ({ theme }) => ({
     // }
 }));
 
-const LoginButton = styled(Button)( ({ theme }) => ({
+const LoginButton = styled(Button)(({ theme }) => ({
     color: '#2874f0',
     background: '#fff',
     textTransform: 'none',
@@ -62,33 +74,91 @@ const LoginButton = styled(Button)( ({ theme }) => ({
     }
 }));
 
+const MoreOptions = styled(Menu)`
+    margin-top: 5px;
+`;
+
+const MoreOptionsItemText = styled(ListItemText)`
+    font-size: 14px;
+    border-bottom: 1px solid #f2f2f2;
+`;
+
 const CustomButtons = () => {
 
-    const [open, setOpen] = useState(false); 
+    const [open, setOpen] = useState(false);
+    const [moreOpen, setMoreOpen] = useState(false);
+
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const { account, setAccount } = useContext(DataContext);
 
-    const { cartItems } = useSelector( state => state.cart );
+    const { cartItems } = useSelector(state => state.cart);
 
     const handleClick = () => {
         setOpen(true);
     };
-    
-    return(
+
+    const handleMoreOpen = (evt) => {
+        setMoreOpen(evt.currentTarget);
+        setMenuOpen(true);
+    };
+
+    const handleMoreClose = () => {
+        setMoreOpen('');
+        setMenuOpen(false);
+    };
+
+    return (
         <Wrapper>
             {
                 account ? <Profile account={account} setAccount={setAccount} /> : <LoginButton onClick={handleClick} variant="contained">Login</LoginButton>
             }
-            <Typography style={{marginTop: 3, width: 135}}>Beome a Seller</Typography>
-            <Typography style={{marginTop: 3}}>More</Typography>
+            <Typography style={{ marginTop: 3, width: 135 }}>Beome a Seller</Typography>
+
+            <Box onClick={handleMoreOpen} style={{ cursor: 'pointer', fontWeight: 600, display: 'flex' }}>
+                More
+                {menuOpen ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />}
+            </Box>
+
+            <MoreOptions anchorEl={moreOpen} open={Boolean(moreOpen)} onClose={handleMoreClose} >
+
+                <MenuItem onClick={() => { handleMoreClose(); }}>
+                    <ListItemIcon>
+                        <NotificationsIcon fontSize="small" color='primary'/>
+                    </ListItemIcon>
+                    <MoreOptionsItemText>Notification Preferences</MoreOptionsItemText>
+                </MenuItem>
+
+                <MenuItem onClick={() => { handleMoreClose(); }}>
+                    <ListItemIcon>
+                        <LiveHelpIcon fontSize="small" color='primary'/>
+                    </ListItemIcon>
+                    <MoreOptionsItemText>24x7 Customer Care</MoreOptionsItemText>
+                </MenuItem>
+
+                <MenuItem onClick={() => { handleMoreClose(); }}>
+                    <ListItemIcon>
+                        <MovingIcon fontSize="small" color='primary'/>
+                    </ListItemIcon>
+                    <MoreOptionsItemText>Advertise</MoreOptionsItemText>
+                </MenuItem>
+
+                <MenuItem onClick={() => { handleMoreClose(); }} >
+                    <ListItemIcon>
+                        <DownloadIcon fontSize="small" color='primary'/>
+                    </ListItemIcon>
+                    <MoreOptionsItemText style={{ border: 'none' }}>Download App</MoreOptionsItemText>
+                </MenuItem>
+
+            </MoreOptions>
 
             <Container to='/cart'>
 
                 <Badge badgeContent={cartItems.length} color='secondary' >
                     <ShoppingCart />
                 </Badge>
-                
-                <Typography style={{marginLeft: 10}}>Cart</Typography>
+
+                <Typography style={{ marginLeft: 10 }}>Cart</Typography>
 
             </Container>
             <LoginDialog open={open} setOpen={setOpen} />
