@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 
 const HeadingBox = styled(Box)`
@@ -38,28 +38,7 @@ const Discount = styled(Typography)`
     font-weight: 500;
 `;
 
-const TotalBalance = ({ cartItems }) => {
-
-    const [price, setPrice] = useState(0);
-    const [discount, setDiscount] = useState(0);
-
-    useEffect( () => {
-        totalAmount();
-    }, [cartItems])
-
-    const totalAmount = () => {
-
-        let price = 0, disc = 0;
-
-        cartItems.map( item => {
-            price += item.price.mrp;
-            disc += (item.price.mrp - item.price.cost);
-        });
-
-        setPrice(price);
-        setDiscount(disc);
-
-    };
+const TotalBalance = ({ cartSize, price, discount }) => {
     
     return(
         <Box>
@@ -69,7 +48,7 @@ const TotalBalance = ({ cartItems }) => {
             </HeadingBox>
 
             <Container>
-                <Typography>Price ({cartItems?.length}) item(s)
+                <Typography>Price ({cartSize} items)
                     <Price component='span'>₹{price}</Price>
                 </Typography>
                 <Typography>Discount

@@ -1,6 +1,7 @@
 export const products = [
     { 
         id: 'product01',
+        category: 'type1',
         url: 'https://rukminim1.flixcart.com/image/150/150/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kapoo7k0/electric-kettle/p/6/s/pigeon-favourite-original-imafs7xhj5uwgrh4.jpeg?q=70',
         title: {
@@ -19,6 +20,7 @@ export const products = [
     },
     { 
         id: 'product02',
+        category: 'type1',
         url: 'https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/sandwich-maker/8/r/d/sandwich-01-flipkart-smartbuy-original-imagydds4zthxt8z.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kl6wx3k0/sandwich-maker/8/r/d/sandwich-01-flipkart-smartbuy-original-imagydds4zthxt8z.jpeg?q=70',
         title: {
@@ -37,6 +39,7 @@ export const products = [
     },
     { 
         id: 'product03',
+        category: 'type1',
         url: 'https://rukminim1.flixcart.com/image/150/150/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kohigsw0/resistance-tube/c/s/e/new-adjustable-single-resistance-tube-multicolor-na-ajro-deal-original-imag2xg88mhmwxz5.jpeg?q=70', 
         title: {
@@ -55,6 +58,7 @@ export const products = [
     },
     { 
         id: 'product04',
+        category: 'type1',
         url: 'https://rukminim1.flixcart.com/image/300/300/kll7bm80/smartwatch/c/1/n/43-mo-sw-sense-500-android-ios-molife-original-imagyzyycnpujyjh.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kll7bm80/smartwatch/c/1/n/43-mo-sw-sense-500-android-ios-molife-original-imagyzyycnpujyjh.jpeg?q=70',
         title: {
@@ -73,6 +77,7 @@ export const products = [
     },
     { 
         id: 'product05',
+        category: 'type1',
         url: 'https://rukminim1.flixcart.com/image/416/416/k3uhhu80/hair-dryer/n/m/t/nova-2800-w-professional-nhp-8220-original-imafmvwfhmzsxdrw.jpeg?q=70',
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/k3uhhu80/hair-dryer/n/m/t/nova-2800-w-professional-nhp-8220-original-imafmvwfhmzsxdrw.jpeg?q=70', 
         title: {
@@ -91,6 +96,7 @@ export const products = [
     },
     { 
         id: 'product06',
+        category: 'type1',
         url: 'https://rukminim1.flixcart.com/image/150/150/kk01pjk0/fan/d/d/l/tiktik-quiet-portable-table-fan-zigma-original-imafzg7ftzuckpad.jpeg?q=70',
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kk01pjk0/fan/d/d/l/tiktik-quiet-portable-table-fan-zigma-original-imafzg7ftzuckpad.jpeg?q=70', 
         title: {
@@ -109,6 +115,7 @@ export const products = [
     },
     { 
         id: 'product07',
+        category: 'type1',
         url: 'https://rukminim1.flixcart.com/image/150/150/kcgk1ow0/headphone/n/u/a/235v2-fast-charging-boat-original-imaftk6us4af7bca.jpeg?q=70',
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kcgk1ow0/headphone/n/u/a/235v2-fast-charging-boat-original-imaftk6us4af7bca.jpeg?q=70', 
         title: {
@@ -124,12 +131,10 @@ export const products = [
         description: 'Let music brighten up your mood anytime, anywhere with the boAt 235v2 Fast Charging Bluetooth Headset. This Bluetooth headset features a Call Vibration Alert, a Fast Charging Technology, and Easy Access Controls to listen to and manage your favorite music with ease.',
         discount: 'Minimum 50% Off', 
         tagline: 'Grab Now!' 
-    }
-];
-
-export const newProducts = [
+    },
     { 
         id: 'product11',
+        category: 'type11',
         url: 'https://rukminim1.flixcart.com/image/612/612/xif0q/helmet/o/w/n/ign-4-isi-certified-full-face-helmet-1-ign-4-58-full-face-ignyte-original-imaghj9m6j2vzzgy.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/xif0q/helmet/o/w/n/ign-4-isi-certified-full-face-helmet-1-ign-4-58-full-face-ignyte-original-imaghj9m6j2vzzgy.jpeg?q=70',
         title: {
@@ -148,6 +153,7 @@ export const newProducts = [
     },
     { 
         id: 'product12',
+        category: 'type11',
         url: 'https://rukminim1.flixcart.com/image/312/312/l4hcx3k0/computer/y/j/z/macbook-air-thin-and-light-laptop-apple-original-imagfdeqter4sj2j.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/l4hcx3k0/computer/y/j/z/macbook-air-thin-and-light-laptop-apple-original-imagfdeqter4sj2j.jpeg?q=70',
         title: {
@@ -166,6 +172,7 @@ export const newProducts = [
     },
     { 
         id: 'product13',
+        category: 'type11',
         url: 'https://rukminim1.flixcart.com/image/612/612/k3j1z0w0/kit/d/v/e/combo-of-ab-wheel-rollerand-tummy-trimmer-exercisee1s-charuvi-original-imafdwh9nyzyujvk.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/k3j1z0w0/kit/d/v/e/combo-of-ab-wheel-rollerand-tummy-trimmer-exercisee1s-charuvi-original-imafdwh9nyzyujvk.jpeg?q=70', 
         title: {
@@ -173,8 +180,8 @@ export const newProducts = [
             longTitle: 'Manogyam Abdominal Double Wheel Ab Roller Gym For Exercise Fitness Equipment Workout Ab Exerciser  (Multicolor)'
         }, 
         price: {
-            mrp: 169,
-            cost: 599,
+            mrp: 599,
+            cost: 169,
             discount: '71%'
         },
         quantity: 1,
@@ -184,6 +191,7 @@ export const newProducts = [
     },
     { 
         id: 'product14',
+        category: 'type11',
         url: 'https://rukminim1.flixcart.com/image/612/612/kthjy4w0/power-bank/n/1/l/pocket-pro-pb1022zm-mi-original-imag6tcrh2vcmgxj.jpeg?q=70', 
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/kthjy4w0/power-bank/n/1/l/pocket-pro-pb1022zm-mi-original-imag6tcrh2vcmgxj.jpeg?q=70',
         title: {
@@ -202,6 +210,7 @@ export const newProducts = [
     },
     { 
         id: 'product15',
+        category: 'type11',
         url: 'https://rukminim1.flixcart.com/image/612/612/km0x5zk0/jam-spread/k/p/t/510-high-protein-peanut-butter-dark-chocolate-crunchy-tub-nut-original-imagfymfpcvwvbus.jpeg?q=70',
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/km0x5zk0/jam-spread/k/p/t/510-high-protein-peanut-butter-dark-chocolate-crunchy-tub-nut-original-imagfymfpcvwvbus.jpeg?q=70', 
         title: {
@@ -220,6 +229,7 @@ export const newProducts = [
     },
     { 
         id: 'product16',
+        category: 'type11',
         url: 'https://rukminim1.flixcart.com/image/612/612/l0lbrm80/tea/d/g/r/-original-imagccn5en4vadh2.jpeg?q=70',
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/l0lbrm80/tea/d/g/r/-original-imagccn5en4vadh2.jpeg?q=70', 
         title: {
@@ -238,6 +248,7 @@ export const newProducts = [
     },
     { 
         id: 'product17',
+        category: 'type11',
         url: 'https://rukminim1.flixcart.com/image/612/612/k3dc7m80/glass/q/z/h/glass-999-glass-world-original-imafg9tnz9zqjytx.jpeg?q=70',
         detailUrl: 'https://rukminim1.flixcart.com/image/416/416/k3dc7m80/glass/q/z/h/glass-999-glass-world-original-imafg9tnz9zqjytx.jpeg?q=70', 
         title: {

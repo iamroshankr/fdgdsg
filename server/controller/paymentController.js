@@ -6,12 +6,18 @@ import { paytmMerchantKey, paytmParams } from "../index.js";
 
 export const addPaymentGateway = async (req, res) => {
     try {
+        
+        // const updatedParams = {
+        //     ...paytmParams,
+        //     'TXN_AMOUNT': req.body.amount
+        // };
+
         const paytmChecksum =  await paytmchecksum.generateSignature( paytmParams, paytmMerchantKey );
 
         const params = {
             ...paytmParams,
             'CHECKSUMHASH': paytmChecksum
-        }
+        };
 
         res.status(200).json(params);
     }

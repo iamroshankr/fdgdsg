@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Grid, Button, Typography, styled } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -66,6 +66,10 @@ const Cart = () => {
 
     const dispatch = useDispatch();
 
+    const [price, setPrice] = useState(0);
+    const [discount, setDiscount] = useState(0);
+    const [cartSize, setCartSize] = useState(0);
+
     const { cartItems } = useSelector( state => state.cart);
 
     const emptyCart = () => {
@@ -74,7 +78,7 @@ const Cart = () => {
 
     const buyNow = async () => {
 
-        const resp = await payWithPaytm({ amount: 500, email: 'a@b.com' });
+        const resp = await payWithPaytm({ amount: (price-discount+40).toString(), email: 'a@b.com' });
 
         const information = {
             action: 'https://securegw-stage.paytm.in/order/process',
@@ -82,6 +86,32 @@ const Cart = () => {
         };
 
         post(information);
+
+    };
+
+    useEffect( () => {
+
+        totalAmount();
+        if(cartItems) {
+            setCartSize(cartItems.length);
+        }
+        else {
+            setCartSize(0);
+        }
+
+    }, [cartItems])
+
+    const totalAmount = () => {
+
+        let price = 0, disc = 0;
+
+        cartItems.map( item => {
+            price += item.price.mrp;
+            disc += (item.price.mrp - item.price.cost);
+        });
+
+        setPrice(price);
+        setDiscount(disc);
 
     };
 
@@ -111,7 +141,7 @@ const Cart = () => {
                         </LeftComponent>
 
                         <Grid item lg={3} md={3} sm={12} xs={12}>
-                            <TotalBalance cartItems={cartItems} />
+                            <TotalBalance cartSize={cartSize} price={price} discount={discount} />
                         </Grid>
 
                     </Container>

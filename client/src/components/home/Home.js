@@ -19,6 +19,12 @@ const Home = () => {
 
     const { loading, products } = useSelector(state => state.getProducts);
 
+    const type1prods = products.filter( prod => prod.category === 'type1');
+    const type2prods = products.filter( prod => prod.category === 'type11');
+
+    // console.log(type1prods);
+    // console.log(type2prods);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -35,15 +41,15 @@ const Home = () => {
                     loading ?
                         <LoadingSpinner /> :
                         <>
-                            <MidSlide products={products} title="Deal of the Day" timer={true} />
-                            <Slide products={products} title="Discounts for You" timer={false} />
-                            <Slide products={products} title="Suggested Items" timer={false} />
-                            <Slide products={products} title="Top Selection" timer={false} />
+                            <MidSlide products={type1prods} title="Deal of the Day" timer={true} />
+                            <Slide products={type2prods} title="Discounts for You" timer={false} />
+                            <Slide products={type1prods} title="Suggested Items" timer={false} />
+                            <Slide products={type2prods} title="Top Selection" timer={false} />
                             <MidSection />
-                            <Slide products={products} title="Recommended Items" timer={false} />
-                            <Slide products={products} title="Trending Offers" timer={false} />
-                            <Slide products={products} title="Season's Top Picks" timer={false} />
-                            <Slide products={products} title="Top Deals on Accessories" timer={false} />
+                            <Slide products={type1prods} title="Recommended Items" timer={false} />
+                            <Slide products={type2prods} title="Trending Offers" timer={false} />
+                            <Slide products={type1prods} title="Season's Top Picks" timer={false} />
+                            <Slide products={type2prods} title="Top Deals on Accessories" timer={false} />
                         </>
                 }
             </Component>

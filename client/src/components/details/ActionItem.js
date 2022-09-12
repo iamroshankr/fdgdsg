@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Button, styled } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FlashOnIcon from '@mui/icons-material/FlashOn';
 
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addToCart } from '../../redux/actions/cartActions';
 import { payWithPaytm } from "../../service/api";
@@ -53,7 +53,7 @@ const ActionItem = ({ product }) => {
 
     const buyNow = async () => {
 
-        const resp = await payWithPaytm({ amount: 500, email: 'a@b.com' });
+        const resp = await payWithPaytm({ amount: (product.price.cost+40).toString(), email: 'a@b.com' });
 
         const information = {
             action: 'https://securegw-stage.paytm.in/order/process',

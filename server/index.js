@@ -14,6 +14,7 @@ dotenv.config(); //initializing the dotenv file
 app.use(express.json({extended: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
+
 app.use('/', Router);
 
 const port = 8000;
