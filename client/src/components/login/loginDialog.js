@@ -3,6 +3,7 @@ import { styled, Box, Dialog, TextField, Typography, Button } from "@mui/materia
 
 import { authenticateSignUp, authenticateLogin } from "../../service/api";
 import { DataContext } from '../../context/DataProvider';
+import { jsx } from '@emotion/react';
 
 const Component = styled(Box)`
     height: 70vh;
@@ -100,7 +101,7 @@ const loginInitVals = {
     password: ''
 };
 
-const LoginDialog = ({ open, setOpen }) => {
+const LoginDialog = ({ open, setOpen, drawer, closeDrawer }) => {
 
     const [account, toggleAccount] = useState(accountInitialValues.login)
     const [signUp, setSignUp] = useState(signUpInitVals);
@@ -113,6 +114,7 @@ const LoginDialog = ({ open, setOpen }) => {
         setOpen(false);
         toggleAccount(accountInitialValues.login);
         setError(false);
+        if(drawer) closeDrawer();
     };
 
     const handleLoginInputChange = (evt) => {
@@ -127,6 +129,7 @@ const LoginDialog = ({ open, setOpen }) => {
         if(resp.status === 200) {
             closeDialog();
             setAccount(resp.data.data.fname);
+            if(drawer) closeDrawer();
         }
         else {
             setError(true);
@@ -145,6 +148,7 @@ const LoginDialog = ({ open, setOpen }) => {
         if(!resp) return;
         closeDialog();
         setAccount(signUp.fname);
+        if(drawer) closeDrawer();
     };
  
     return(

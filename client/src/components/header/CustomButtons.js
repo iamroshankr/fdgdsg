@@ -83,7 +83,7 @@ const MoreOptionsItemText = styled(ListItemText)`
     border-bottom: 1px solid #f2f2f2;
 `;
 
-const CustomButtons = () => {
+const CustomButtons = ({ drawer, closeDrawer }) => {
 
     const [open, setOpen] = useState(false);
     const [moreOpen, setMoreOpen] = useState(false);
@@ -110,40 +110,50 @@ const CustomButtons = () => {
 
     return (
         <Wrapper>
-            {
-                account ? <Profile account={account} setAccount={setAccount} /> : <LoginButton onClick={handleClick} variant="contained">Login</LoginButton>
-            }
-            <Typography style={{ marginTop: 3, width: 135 }}>Beome a Seller</Typography>
 
-            <Box onClick={handleMoreOpen} style={{ cursor: 'pointer', fontWeight: 600, display: 'flex' }}>
+            {
+                account ? 
+                    <Profile account={account} setAccount={setAccount} drawer={drawer} closeDrawer={closeDrawer} /> 
+                : 
+                    <LoginButton onClick={handleClick} variant="contained">Login</LoginButton>
+            }
+
+            <Typography 
+                style={{ marginTop: 3, width: 135 }}
+                onClick={() => { if(drawer) closeDrawer(); }}
+            >
+                Beome a Seller
+            </Typography>
+
+            <Box onClick={handleMoreOpen} style={{ cursor: 'pointer', fontWeight: 600, display: 'flex' }} >
                 More
                 {menuOpen ? <ExpandLessIcon fontSize="small" /> : <ExpandMoreIcon fontSize="small" />}
             </Box>
 
             <MoreOptions anchorEl={moreOpen} open={Boolean(moreOpen)} onClose={handleMoreClose} >
 
-                <MenuItem onClick={() => { handleMoreClose(); }}>
+                <MenuItem onClick={() => { handleMoreClose(); if(drawer) closeDrawer(); }}>
                     <ListItemIcon>
                         <NotificationsIcon fontSize="small" color='primary'/>
                     </ListItemIcon>
                     <MoreOptionsItemText>Notification Preferences</MoreOptionsItemText>
                 </MenuItem>
 
-                <MenuItem onClick={() => { handleMoreClose(); }}>
+                <MenuItem onClick={() => { handleMoreClose(); if(drawer) closeDrawer(); }}>
                     <ListItemIcon>
                         <LiveHelpIcon fontSize="small" color='primary'/>
                     </ListItemIcon>
                     <MoreOptionsItemText>24x7 Customer Care</MoreOptionsItemText>
                 </MenuItem>
 
-                <MenuItem onClick={() => { handleMoreClose(); }}>
+                <MenuItem onClick={() => { handleMoreClose(); if(drawer) closeDrawer(); }}>
                     <ListItemIcon>
                         <MovingIcon fontSize="small" color='primary'/>
                     </ListItemIcon>
                     <MoreOptionsItemText>Advertise</MoreOptionsItemText>
                 </MenuItem>
 
-                <MenuItem onClick={() => { handleMoreClose(); }} >
+                <MenuItem onClick={() => { handleMoreClose(); if(drawer) closeDrawer(); }} >
                     <ListItemIcon>
                         <DownloadIcon fontSize="small" color='primary'/>
                     </ListItemIcon>
@@ -152,7 +162,7 @@ const CustomButtons = () => {
 
             </MoreOptions>
 
-            <Container to='/cart'>
+            <Container to='/cart' onClick={() => { if(drawer) closeDrawer(); if(drawer) closeDrawer(); }} >
 
                 <Badge badgeContent={cartItems.length} color='secondary' >
                     <ShoppingCart />
@@ -161,7 +171,7 @@ const CustomButtons = () => {
                 <Typography style={{ marginLeft: 10 }}>Cart</Typography>
 
             </Container>
-            <LoginDialog open={open} setOpen={setOpen} />
+            <LoginDialog open={open} setOpen={setOpen} drawer={drawer} closeDrawer={closeDrawer} />
         </Wrapper>
     );
 }

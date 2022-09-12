@@ -14,7 +14,7 @@ const Logout = styled(Typography)`
     margin-left: 15px;
 `;
 
-const Profile = ({ account, setAccount }) => {
+const Profile = ({ account, setAccount, drawer, closeDrawer }) => {
 
     const [open, setOpen] = useState('');
     const [menuOpen, setMenuOpen] = useState(false);
@@ -31,6 +31,7 @@ const Profile = ({ account, setAccount }) => {
 
     const logoutUser = () => {
         setAccount('');
+        if(drawer) closeDrawer();
     };
 
     return (

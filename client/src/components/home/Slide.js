@@ -99,7 +99,7 @@ const Slide = ({ products, title, timer }) => {
                 autoPlay={true}
                 autoPlaySpeed={3000}
                 keyBoardControl={true}
-                slidesToSlide={2}
+                slidesToSlide={1}
                 containerClass="carousel-container"
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"

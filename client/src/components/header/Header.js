@@ -74,10 +74,10 @@ const Header = () => {
     const renderList = () => {
 
         return (
-            <Box onClick={closeDrawer} >
+            <Box>
                 <List>
                     <ListItem button>
-                        <CustomButtons />
+                        <CustomButtons drawer={true} closeDrawer={closeDrawer} />
                     </ListItem>
                 </List>
             </Box>
@@ -109,7 +109,7 @@ const Header = () => {
                 <Search />
 
                 <CustomButtonBox>
-                    <CustomButtons />
+                    <CustomButtons drawer={false} closeDrawer={closeDrawer} />
                 </CustomButtonBox>
 
             </Toolbar>
